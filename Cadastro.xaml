@@ -1,15 +1,18 @@
-<Window x:Class="CRUD.MainWindow"
+﻿<Window x:Class="CRUD.Cadastro"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRUD"
         mc:Ignorable="d"
-       Title="orkut - Login" Height="550" Width="450"
+        Title="orkut - Criar Conta" 
+        Height="580" Width="450" 
+        ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen"
         Background="#F4EFEA" FontFamily="Segoe UI">
-    
+        
     <Grid>
+        <!-- Fundo em Gradiente idêntico ao Login -->
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#F9F6F0" Offset="0.0"/>
@@ -19,61 +22,90 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
             
-            <TextBlock Text="orkut!" 
-                       FontSize="54" 
+            <!-- Título da Janela de Cadastro -->
+            <TextBlock Text="Crie uma conta" 
+                       FontSize="28" 
                        FontWeight="Bold" 
                        Foreground="#7B583E" 
                        HorizontalAlignment="Center" 
-                       Margin="0,0,0,5">
+                       Margin="0,0,0,20">
                 <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#D2B48C" Opacity="0.5"/>
+                    <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#D2B48C" Opacity="0.5"/>
                 </TextBlock.Effect>
             </TextBlock>
             
-            <TextBlock Text="conectando você aos seus amigos" 
-                       FontSize="14" 
-                       Foreground="#9C7A5F" 
-                       HorizontalAlignment="Center" 
-                       Margin="0,0,0,30" 
-                       FontStyle="Italic"/>
-
+            <!-- Card de Formulário -->
             <Border Background="White" 
                     BorderBrush="#D5C5B5" 
                     BorderThickness="1" 
                     CornerRadius="8" 
-                    Padding="25,30,25,30">
+                    Padding="25,25,25,25">
                 
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" ShadowDepth="2" Color="#8B7355" Opacity="0.15"/>
                 </Border.Effect>
 
                 <StackPanel>
-                    <TextBlock Text="Nome de usuário ou e-mail" 
-                               Foreground="#5A4535" 
-                               FontWeight="SemiBold" 
-                               Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtUsername" 
+                    
+                    <!-- Campo: Nome -->
+                    <Label Content="Nome:" 
+                           Foreground="#5A4535" 
+                           FontWeight="SemiBold" 
+                           Padding="0" 
+                           Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtNome" 
                              Height="35" 
                              Padding="8,5,8,5" 
                              BorderBrush="#D5C5B5" 
                              BorderThickness="1" 
-                             Margin="0,0,0,15"
+                             Margin="0,0,0,15" 
                              VerticalContentAlignment="Center"/>
-
-                    <TextBlock Text="Senha" 
-                               Foreground="#5A4535" 
-                               FontWeight="SemiBold" 
-                               Margin="0,0,0,5"/>
-                    <PasswordBox x:Name="TxtPassword" 
+                    
+                    <!-- Campo: Username -->
+                    <Label Content="Username:" 
+                           Foreground="#5A4535" 
+                           FontWeight="SemiBold" 
+                           Padding="0" 
+                           Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtUser" 
+                             Height="35" 
+                             Padding="8,5,8,5" 
+                             BorderBrush="#D5C5B5" 
+                             BorderThickness="1" 
+                             Margin="0,0,0,15" 
+                             VerticalContentAlignment="Center"/>
+                    
+                    <!-- Campo: E-mail -->
+                    <Label Content="E-mail:" 
+                           Foreground="#5A4535" 
+                           FontWeight="SemiBold" 
+                           Padding="0" 
+                           Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtEmail" 
+                             Height="35" 
+                             Padding="8,5,8,5" 
+                             BorderBrush="#D5C5B5" 
+                             BorderThickness="1" 
+                             Margin="0,0,0,15" 
+                             VerticalContentAlignment="Center"/>
+                    
+                    <!-- Campo: Senha -->
+                    <Label Content="Senha:" 
+                           Foreground="#5A4535" 
+                           FontWeight="SemiBold" 
+                           Padding="0" 
+                           Margin="0,0,0,5"/>
+                    <PasswordBox x:Name="txtSenha" 
                                  Height="35" 
                                  Padding="8,5,8,5" 
                                  BorderBrush="#D5C5B5" 
                                  BorderThickness="1" 
-                                 Margin="0,0,0,25"
+                                 Margin="0,0,0,25" 
                                  VerticalContentAlignment="Center"/>
-
-                    <Button x:Name="BtnLogin" 
-                            Content="Logar no Orkut" 
+                    
+                    <!-- Botão Cadastrar -->
+                    <Button x:Name="btnCadastro" 
+                            Content="Registre-se" 
                             Height="40" 
                             Background="#7B583E" 
                             Foreground="White" 
@@ -81,7 +113,7 @@
                             FontSize="14"
                             BorderThickness="0" 
                             Cursor="Hand"
-                            Margin="0,0,0,12">
+                            Click="BtnCadastrar_OnClick">
                         <Button.Resources>
                             <Style TargetType="Button">
                                 <Setter Property="Template">
@@ -101,49 +133,11 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-
-                    <Separator Background="#E6DEC9" Margin="0,10,0,15"/>
-
-                    <TextBlock Text="Novo por aqui?" 
-                               Foreground="#8B7355" 
-                               HorizontalAlignment="Center" 
-                               Margin="0,0,0,8"/>
-                    
-                    <Button x:Name="BtnRegister" 
-                            Content="Criar uma conta grátis" 
-                            Height="35" 
-                            Background="#EDF2F7" 
-                            Foreground="#7B583E" 
-                            FontWeight="SemiBold" 
-                            BorderBrush="#7B583E"
-                            BorderThickness="1" 
-                            Cursor="Hand">
-                        <Button.Resources>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}" 
-                                                    BorderBrush="{TemplateBinding BorderBrush}" 
-                                                    BorderThickness="{TemplateBinding BorderThickness}" 
-                                                    CornerRadius="4">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#E2E8F0"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
                     
                 </StackPanel>
             </Border>
             
+            <!-- Rodapé sutil padrão Orkut -->
             <TextBlock Text="© 2004 - 2026 orkut paródia inc." 
                        FontSize="11" 
                        Foreground="#A89482" 
