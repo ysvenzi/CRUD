@@ -48,11 +48,11 @@
                 </Border.Effect>
 
                 <StackPanel>
-                    <TextBlock Text="Nome de usuário ou e-mail" 
+                    <TextBlock Text="Nome de usuário" 
                                Foreground="#5A4535" 
                                FontWeight="SemiBold" 
                                Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtUsername" 
+                    <TextBox x:Name="txtUsername" 
                              Height="35" 
                              Padding="8,5,8,5" 
                              BorderBrush="#D5C5B5" 
@@ -64,7 +64,7 @@
                                Foreground="#5A4535" 
                                FontWeight="SemiBold" 
                                Margin="0,0,0,5"/>
-                    <PasswordBox x:Name="TxtPassword" 
+                    <PasswordBox x:Name="txtPassword" 
                                  Height="35" 
                                  Padding="8,5,8,5" 
                                  BorderBrush="#D5C5B5" 
@@ -72,7 +72,7 @@
                                  Margin="0,0,0,25"
                                  VerticalContentAlignment="Center"/>
 
-                    <Button x:Name="BtnLogin" 
+                    <Button x:Name="btnLogin" Click="BtnLogin_OnClick"
                             Content="Logar no Orkut" 
                             Height="40" 
                             Background="#7B583E" 
@@ -109,7 +109,7 @@
                                HorizontalAlignment="Center" 
                                Margin="0,0,0,8"/>
                     
-                    <Button x:Name="BtnRegister" 
+                    <Button x:Name="btnRegister" 
                             Content="Criar uma conta grátis" 
                             Height="35" 
                             Background="#EDF2F7" 

@@ -10,10 +10,14 @@ namespace CRUD;
 /// </summary>
 public partial class App : Application
 {
+    internal static string? stringConexao;
+
     protected override void OnStartup(StartupEventArgs e)
     {
         Env.Load("C://Users//Aluno//RiderProjects//CRUD//.env");
-        
+
+        stringConexao = Environment.GetEnvironmentVariable("MYSQL_STRING");
+
         base.OnStartup(e);
     }
 }

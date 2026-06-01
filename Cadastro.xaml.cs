@@ -19,8 +19,6 @@ namespace CRUD;
 /// </summary>
 public partial class Cadastro : Window
 {
-    public string stringConexao = Environment.GetEnvironmentVariable("MYSQL_STRING");
-    
     public Cadastro()
     {
         InitializeComponent();
@@ -33,11 +31,11 @@ public partial class Cadastro : Window
             string.IsNullOrWhiteSpace(txtSenha.Password) ||
             string.IsNullOrWhiteSpace(txtUser.Text))
         {
-            MessageBox.Show("Todos os campos são obrigatóros",  "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Todos os campos são obrigatóros", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
 
-        using (var conexao = new MySqlConnection(stringConexao))
+        using (var conexao = new MySqlConnection(App.stringConexao))
         {
             var query = "INSERT INTO usuarios(nome, email, senha, username) VALUES(@nome, @email, @senha, @username)";
 
@@ -67,7 +65,7 @@ public partial class Cadastro : Window
                             return;
                         }
                     }
-                    
+
                     Console.WriteLine(exception);
                     throw;
                 }
