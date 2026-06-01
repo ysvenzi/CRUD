@@ -109,7 +109,7 @@
                                HorizontalAlignment="Center" 
                                Margin="0,0,0,8"/>
                     
-                    <Button x:Name="btnRegister" 
+                    <Button x:Name="btnRegister" Click="BtnRegister_OnClick"
                             Content="Criar uma conta grátis" 
                             Height="35" 
                             Background="#EDF2F7" 
