@@ -65,6 +65,8 @@ public partial class MainWindow : Window
     private void BtnRegister_OnClick(object sender, RoutedEventArgs e)
     {
         Cadastro cadastro = new Cadastro();
-        cadastro.Show();
+        Hide();
+        cadastro.ShowDialog();
+        Show();
     }
 }
