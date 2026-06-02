@@ -1,4 +1,4 @@
-<Window x:Class="CRUD.ProfileWindow"
+<Window x:Class="CRUD.MeuPerfil"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -135,7 +135,7 @@
                                      VerticalContentAlignment="Center"/>
 
                         <!-- Botão Salvar Alterações -->
-                        <Button x:Name="btnSaveProfile" 
+                        <Button x:Name="btnSaveProfile" Click="BtnSalvar_OnClick" 
                                 Content="Salvar Alterações" 
                                 Height="40" 
                                 Background="#7B583E" 
