@@ -22,11 +22,22 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
 
+            <TextBlock Text="orkut!" 
+                       FontSize="35" 
+                       FontWeight="Bold" 
+                       Foreground="#7B583E" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,0,0,5">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#D2B48C" Opacity="0.5"/>
+                </TextBlock.Effect>
+            </TextBlock>
+            
             <!-- Título da Janela de Cadastro -->
-            <TextBlock Text="Crie uma conta"
-                       FontSize="28"
+            <TextBlock Text="crie uma conta:"
+                       FontSize="19"
                        FontWeight="Bold"
-                       Foreground="#7B583E"
+                       Foreground="#4A4139"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,20">
                 <TextBlock.Effect>
@@ -62,7 +73,7 @@
                              VerticalContentAlignment="Center" />
 
                     <!-- Campo: Username -->
-                    <Label Content="Username:"
+                    <Label Content="Nome de usuário (username):"
                            Foreground="#5A4535"
                            FontWeight="SemiBold"
                            Padding="0"

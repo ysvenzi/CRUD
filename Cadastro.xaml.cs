@@ -31,7 +31,7 @@ public partial class Cadastro : Window
             string.IsNullOrWhiteSpace(txtSenha.Password) ||
             string.IsNullOrWhiteSpace(txtUser.Text))
         {
-            MessageBox.Show("Todos os campos são obrigatóros", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Todos os campos são obrigatórios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
 
