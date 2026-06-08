@@ -168,7 +168,7 @@
                         <Separator Background="#E6DEC9" Margin="0,5,0,10"/>
 
                         <!-- Botão Apagar Perfil -->
-                        <Button x:Name="btnDeleteProfile" 
+                        <Button x:Name="btnDeleteProfile" Click="BtnDeleteProfile_OnClick"
                                 Content="Desativar minha conta (Apagar Perfil)" 
                                 Height="35" 
                                 Background="#FFF5F5" 
