@@ -1,0 +1,102 @@
+<Window x:Class="CRUD.Feed"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:modelos="clr-namespace:CRUD.Modelos"
+
+        mc:Ignorable="d"
+        Title="orkut - Feed de Notícias" Height="750" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#F4EFEA" FontFamily="Segoe UI">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#F9F6F0" Offset="0.0" />
+                <GradientStop Color="#E6DEC9" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0,0,0,15">
+                <TextBlock Text="orkut feed!"
+                           FontSize="42"
+                           FontWeight="Bold"
+                           Foreground="#7B583E"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,2">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#D2B48C" Opacity="0.5" />
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <TextBlock Text="veja o que seus amigos estão compartilhando"
+                           FontSize="13"
+                           Foreground="#9C7A5F"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,10"
+                           FontStyle="Italic" />
+            </StackPanel>
+
+
+            <ItemsControl Grid.Row="1"
+                          x:Name="ItemsControlFeed"
+                          Background="Transparent"
+                          BorderThickness="0"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type modelos:Postagem}">
+                        <Border Background="White" BorderBrush="#D5C5B5" BorderThickness="1" CornerRadius="8"
+                                Padding="20" Margin="10,0,10,15" Width="520">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Color="#8B7355" Opacity="0.12" />
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" /><RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Margin="0,0,0,12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Usuario.Nome}" FontWeight="Bold" FontSize="14"
+                                                   Foreground="#7B583E" Margin="0,0,6,0" />
+                                        <TextBlock Text="{Binding Usuario.Username, StringFormat='@{0}'}" FontSize="13" Foreground="#A89482"
+                                                   VerticalAlignment="Bottom" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1" Text="{Binding Postado_em, StringFormat='dd MMM - HH :mm'}" FontSize="11" Foreground="#9C7A5F"
+                                               VerticalAlignment="Center" FontStyle="Italic" />
+                                </Grid>
+                                <TextBlock Grid.Row="1"
+                                           Text="{Binding Conteudo}"
+                                           FontSize="13" Foreground="#4A4139" TextWrapping="Wrap" Margin="0,0,0,15"
+                                           LineHeight="18" />
+                                <Button Grid.Row="2" Content="❤ Curtir" HorizontalAlignment="Left" Padding="12,5,12,5"
+                                        Height="28" Background="#EDF2F7" Foreground="#7B583E" FontWeight="SemiBold"
+                                        FontSize="12" BorderBrush="#7B583E" BorderThickness="1" Cursor="Hand" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBlock Grid.Row="2"
+                       Text="© 2004 - 2026 orkut paródia inc."
+                       FontSize="11"
+                       Foreground="#A89482"
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,0" />
+        </Grid>
+    </Grid>
+</Window>
