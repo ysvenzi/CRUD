@@ -1,22 +1,8 @@
-﻿using System.Configuration;
-using System.IO;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using MySql.Data.MySqlClient;
 
 namespace CRUD;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public partial class Cadastro : Window
 {
     public Cadastro()
@@ -26,23 +12,23 @@ public partial class Cadastro : Window
 
     private void BtnCadastrar_OnClick(object sender, RoutedEventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(txtNome.Text) ||
-            string.IsNullOrWhiteSpace(txtEmail.Text) ||
-            string.IsNullOrWhiteSpace(txtSenha.Password) ||
-            string.IsNullOrWhiteSpace(txtUser.Text))
+        if (string.IsNullOrWhiteSpace(TxtNome.Text) ||
+            string.IsNullOrWhiteSpace(TxtUsername.Text) ||
+            string.IsNullOrWhiteSpace(TxtEmail.Text) ||
+            string.IsNullOrWhiteSpace(TxtSenha.Password))
         {
-            MessageBox.Show("Todos os campos são obrigatórios", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Todos os campos são obrigatórios.", "Erro!");
             return;
         }
 
-        using var conexao = new MySqlConnection(App.stringConexao);
-        const string query = "INSERT INTO usuarios(nome, email, senha, username) VALUES(@nome, @email, @senha, @username)";
+        using var conexao = new MySqlConnection(App.StringConexao);
+        const string query = "INSERT INTO usuarios(nome, username, email, senha) VALUES(@nome, @username, @email, @senha)";
 
         using var comando = new MySqlCommand(query, conexao);
-        comando.Parameters.AddWithValue("@nome", txtNome.Text);
-        comando.Parameters.AddWithValue("@email", txtEmail.Text);
-        comando.Parameters.AddWithValue("@senha", txtSenha.Password);
-        comando.Parameters.AddWithValue("@username", txtUser.Text);
+        comando.Parameters.AddWithValue("@nome", TxtNome.Text);
+        comando.Parameters.AddWithValue("@username", TxtUsername.Text);
+        comando.Parameters.AddWithValue("@email", TxtEmail.Text);
+        comando.Parameters.AddWithValue("@senha", TxtSenha.Password);
 
         try
         {
@@ -59,13 +45,13 @@ public partial class Cadastro : Window
             {
                 if (erroSql.Number == 1062)
                 {
-                    MessageBox.Show("O email ou username já foram ultilizados!");
+                    MessageBox.Show("O email ou username já foram utilizados");
                     return;
                 }
             }
-
+                    
             Console.WriteLine(exception);
-            throw;
+            return;
         }
     }
 }

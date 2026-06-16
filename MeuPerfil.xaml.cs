@@ -1,4 +1,4 @@
-using System.Windows;
+﻿using System.Windows;
 using CRUD.Modelos;
 using MySql.Data.MySqlClient;
 
@@ -12,42 +12,42 @@ public partial class MeuPerfil : Window
     {
         InitializeComponent();
         UsuarioAtual = usuario;
-        txtProfileName.Text = UsuarioAtual.Nome;
-        txtProfileEmail.Text = UsuarioAtual.Email;
-        txtProfileUsername.Text = UsuarioAtual.Username;
+        TxtNome.Text = UsuarioAtual.Nome;
+        TxtEmail.Text = UsuarioAtual.Email;
+        TxtUsername.Text = UsuarioAtual.Username;
     }
 
     private void BtnSalvar_OnClick(object sender, RoutedEventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(txtProfileName.Text))
+        if (string.IsNullOrWhiteSpace(TxtNome.Text))
         {
             MessageBox.Show("O campo NOME não pode estar vazio.");
-            txtProfileName.Focus();
+            TxtNome.Focus();
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(txtProfileEmail.Text))
+        if (string.IsNullOrWhiteSpace(TxtEmail.Text))
         {
             MessageBox.Show("O campo EMAIL não pode estar vazio.");
-            txtProfileEmail.Focus();
+            TxtEmail.Focus();
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(txtProfileUsername.Text))
+        if (string.IsNullOrWhiteSpace(TxtUsername.Text))
         {
             MessageBox.Show("O campo USERNAME não pode estar vazio.");
-            txtProfileUsername.Focus();
+            TxtUsername.Focus();
             return;
         }
 
-        var senhaFoiAlterada = !string.IsNullOrWhiteSpace(txtProfilePassword.Password);
+        var senhaFoiAlterada = !string.IsNullOrWhiteSpace(TxtSenha.Password);
 
-        UsuarioAtual.Username = txtProfileUsername.Text;
-        UsuarioAtual.Nome = txtProfileName.Text;
-        UsuarioAtual.Email = txtProfileEmail.Text;
-        if (senhaFoiAlterada) UsuarioAtual.Senha = txtProfilePassword.Password;
+        UsuarioAtual.Username = TxtUsername.Text;
+        UsuarioAtual.Nome = TxtNome.Text;
+        UsuarioAtual.Email = TxtEmail.Text;
+        if (senhaFoiAlterada) UsuarioAtual.Senha = TxtSenha.Password;
 
-        using var conexao = new MySqlConnection(App.stringConexao);
+        using var conexao = new MySqlConnection(App.StringConexao);
         var query = "UPDATE usuarios SET username = @username, nome = @nome, email = @email";
 
         if (senhaFoiAlterada) query += ", senha = @senha";
@@ -62,7 +62,7 @@ public partial class MeuPerfil : Window
         comando.Parameters.AddWithValue("@id", UsuarioAtual.Id);
 
         if (senhaFoiAlterada) comando.Parameters.AddWithValue("@senha", UsuarioAtual.Senha);
-        
+
         try
         {
             conexao.Open();
@@ -79,17 +79,16 @@ public partial class MeuPerfil : Window
         }
     }
 
-    private void BtnDeleteProfile_OnClick(object sender, RoutedEventArgs e)
+    private void BtnDeletarPerfil_OnClick(object sender, RoutedEventArgs e)
     {
-        var resultadoMessageBox = MessageBox.Show("Você tem certeza que deseja apagar o seu perfil?",
-            "Confirmação de Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
+        var resultadoMessageBox = MessageBox.Show("Você tem certeza que deseja apagar o seu perfil?", "Confirmação de Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+        
         if (resultadoMessageBox == MessageBoxResult.No) return;
-
+        
         // Criar uma query
         const string query = "DELETE FROM usuarios WHERE id = @id";
         // Criar a conexao
-        using var conexao = new MySqlConnection(App.stringConexao);
+        using var conexao = new MySqlConnection(App.StringConexao);
         // Criar o comando
         using var comando = new MySqlCommand(query, conexao);
         // Adicionar os parametros
@@ -114,5 +113,3 @@ public partial class MeuPerfil : Window
         }
     }
 }
-    
-

@@ -1,215 +1,123 @@
-<Window x:Class="CRUD.MeuPerfil"
+﻿<Window x:Class="CRUD.MeuPerfil"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:CRUD"
         mc:Ignorable="d"
-        Title="orkut - Meu Perfil" Height="750" Width="700"
-        WindowStartupLocation="CenterScreen"
-        Background="#F4EFEA" FontFamily="Segoe UI">
+        Title="Meu Perfil" Height="680" Width="800"
+        WindowStartupLocation="CenterScreen">
     
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#F9F6F0" Offset="0.0"/>
-                <GradientStop Color="#E6DEC9" Offset="1.0"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Border Background="White"
+                CornerRadius="8"
+                Padding="30"
+                Width="380">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2" Opacity="0.1" />
+            </Border.Effect>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="550">
-            
-            <!-- Cabeçalho do Orkut -->
-            <TextBlock Text="orkut!" 
-                       FontSize="42" 
-                       FontWeight="Bold" 
-                       Foreground="#7B583E" 
-                       HorizontalAlignment="Center" 
-                       Margin="0,0,0,5">
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#D2B48C" Opacity="0.5"/>
-                </TextBlock.Effect>
-            </TextBlock>
-            
-            <TextBlock Text="personalize seu perfil do seu jeito" 
-                       FontSize="13" 
-                       Foreground="#9C7A5F" 
-                       HorizontalAlignment="Center" 
-                       Margin="0,0,0,15" 
-                       FontStyle="Italic"/>
+            <StackPanel>
+                <TextBlock Text="Meu Perfil"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="#111827"
+                           Margin="0,0,0,15"
+                           HorizontalAlignment="Center" />
 
-            <!-- Caixa Principal do Perfil -->
-            <Border Background="White" 
-                    BorderBrush="#D5C5B5" 
-                    BorderThickness="1" 
-                    CornerRadius="8" 
-                    Padding="0,0,0,25">
-                
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="15" ShadowDepth="2" Color="#8B7355" Opacity="0.15"/>
-                </Border.Effect>
+                <Ellipse x:Name="ProfileImage" 
+                         Width="90" 
+                         Height="90" 
+                         HorizontalAlignment="Center">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" Stretch="UniformToFill"/>
+                    </Ellipse.Fill>
+                </Ellipse>
 
-                <StackPanel>
-                    
-                    <!-- GRID DE CAPA E AVATAR -->
-                    <Grid Height="170">
-                        <!-- Banner/Capa do Twitter (Preenchido com a cor marrom do Orkut) -->
-                        <Border Background="#7B583E" Height="120" VerticalAlignment="Top" CornerRadius="7,7,0,0">
-                            <TextBlock Text="meu topo do orkut" Foreground="#E6DEC9" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15" FontStyle="Italic" Opacity="0.5"/>
-                        </Border>
+                <TextBlock Text="Nome"
+                           FontSize="14"
+                           Foreground="#374151"
+                           Margin="0,0,0,5" />
+                <TextBox x:Name="TxtNome"
+                         Height="35"
+                         Margin="0,0,0,15"
+                         VerticalContentAlignment="Center"
+                         Padding="5,0" />
 
-                        <!-- Foto de Perfil Redonda Automatizada via ImageBrush -->
-                        <Border Width="100" Height="100" 
-                                HorizontalAlignment="Center" 
-                                VerticalAlignment="Bottom" 
-                                Margin="25,0,0,0"
-                                CornerRadius="50" 
-                                BorderBrush="White" 
-                                BorderThickness="4">
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="5" ShadowDepth="1" Color="#000000" Opacity="0.1"/>
-                            </Border.Effect>
-                            
-                            <!-- Qualquer imagem colocada aqui dentro ficará perfeitamente circular -->
-                            <Border.Background>
-                                <ImageBrush x:Name="imgProfileBrush" 
-                                            ImageSource="C:\Users\Aluno\Downloads\default-avatar.png" 
-                                            Stretch="UniformToFill"/>
-                            </Border.Background>
-                        </Border>
-                    </Grid>
+                <TextBlock Text="E-mail"
+                           FontSize="14"
+                           Foreground="#374151"
+                           Margin="0,0,0,5" />
+                <TextBox x:Name="TxtEmail"
+                         Height="35"
+                         Margin="0,0,0,15"
+                         VerticalContentAlignment="Center"
+                         Padding="5,0" />
 
-                    <!-- FORMULÁRIO DE EDIÇÃO -->
-                    <StackPanel Margin="25,10,25,0">
-                        
-                        <!-- Campo Nome -->
-                        <TextBlock Text="Nome:" 
-                                   Foreground="#5A4535" 
-                                   FontWeight="SemiBold" 
-                                   Margin="0,0,0,4"/>
-                        <TextBox x:Name="txtProfileName" 
-                                 Height="35" 
-                                 Padding="8,5,8,5" 
-                                 BorderBrush="#D5C5B5" 
-                                 BorderThickness="1" 
-                                 Margin="0,0,0,12"
-                                 VerticalContentAlignment="Center"/>
+                <TextBlock Text="Username"
+                           FontSize="14"
+                           Foreground="#374151"
+                           Margin="0,0,0,5" />
+                <TextBox x:Name="TxtUsername"
+                         Height="35"
+                         Margin="0,0,0,15"
+                         VerticalContentAlignment="Center"
+                         Padding="5,0" />
 
-                        <!-- Campo Username -->
-                        <TextBlock Text="Nome de usuário (username):" 
-                                   Foreground="#5A4535" 
-                                   FontWeight="SemiBold" 
-                                   Margin="0,0,0,4"/>
-                        <TextBox x:Name="txtProfileUsername" 
-                                 Height="35" 
-                                 Padding="8,5,8,5" 
-                                 BorderBrush="#D5C5B5" 
-                                 BorderThickness="1" 
-                                 Margin="0,0,0,12"
-                                 VerticalContentAlignment="Center"/>
+                <TextBlock Text="Nova Senha"
+                           FontSize="14"
+                           Foreground="#374151"
+                           Margin="0,0,0,5" />
+                <PasswordBox x:Name="TxtSenha"
+                             Height="35"
+                             Margin="0,0,0,25"
+                             VerticalContentAlignment="Center"
+                             Padding="5,0" />
 
-                        <!-- Campo Email -->
-                        <TextBlock Text="E-mail:" 
-                                   Foreground="#5A4535" 
-                                   FontWeight="SemiBold" 
-                                   Margin="0,0,0,4"/>
-                        <TextBox x:Name="txtProfileEmail" 
-                                 Height="35" 
-                                 Padding="8,5,8,5" 
-                                 BorderBrush="#D5C5B5" 
-                                 BorderThickness="1" 
-                                 Margin="0,0,0,12"
-                                 VerticalContentAlignment="Center"/>
+                <Button x:Name="BtnSalvar"
+                        Content="Salvar Alterações"
+                        Height="40"
+                        Background="#2563EB"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="BtnSalvar_OnClick"
+                        >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
 
-                        <!-- Campo Senha -->
-                        <TextBlock Text="Senha:" 
-                                   Foreground="#5A4535" 
-                                   FontWeight="SemiBold" 
-                                   Margin="0,0,0,4"/>
-                        <PasswordBox x:Name="txtProfilePassword" 
-                                     Height="35" 
-                                     Padding="8,5,8,5" 
-                                     BorderBrush="#D5C5B5" 
-                                     BorderThickness="1" 
-                                     Margin="0,0,0,20"
-                                     VerticalContentAlignment="Center"/>
+                <Button x:Name="BtnDeletarPerfil"
+                        Content="Excluir Minha Conta"
+                        Background="Transparent"
+                        Foreground="#DC2626"
+                        BorderThickness="0"
+                        Margin="0,15,0,0"
+                        Cursor="Hand"
+                        Click="BtnDeletarPerfil_OnClick"
+                        >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <TextBlock Text="{TemplateBinding Content}"
+                                                   HorizontalAlignment="Center"
+                                                   FontWeight="SemiBold"
+                                                   FontSize="13"
+                                                   TextDecorations="Underline" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
-                        <!-- Botão Salvar Alterações -->
-                        <Button x:Name="btnSaveProfile" Click="BtnSalvar_OnClick" 
-                                Content="Salvar Alterações" 
-                                Height="40" 
-                                Background="#7B583E" 
-                                Foreground="White" 
-                                FontWeight="Bold" 
-                                FontSize="14"
-                                BorderThickness="0" 
-                                Cursor="Hand"
-                                Margin="0,0,0,12">
-                            <Button.Resources>
-                                <Style TargetType="Button">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="4">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#5C402D"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Resources>
-                        </Button>
-
-                        <Separator Background="#E6DEC9" Margin="0,5,0,10"/>
-
-                        <!-- Botão Apagar Perfil -->
-                        <Button x:Name="btnDeleteProfile" Click="BtnDeleteProfile_OnClick"
-                                Content="Desativar minha conta (Apagar Perfil)" 
-                                Height="35" 
-                                Background="#FFF5F5" 
-                                Foreground="#C53030" 
-                                FontWeight="SemiBold" 
-                                BorderBrush="#E53E3E"
-                                BorderThickness="1" 
-                                Cursor="Hand">
-                            <Button.Resources>
-                                <Style TargetType="Button">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border Background="{TemplateBinding Background}" 
-                                                        BorderBrush="{TemplateBinding BorderBrush}" 
-                                                        BorderThickness="{TemplateBinding BorderThickness}" 
-                                                        CornerRadius="4">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FED7D7"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Resources>
-                        </Button>
-                        
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-            
-            <!-- Rodapé -->
-            <TextBlock Text="© 2004 - 2026 orkut paródia inc." 
-                       FontSize="11" 
-                       Foreground="#A89482" 
-                       HorizontalAlignment="Center" 
-                       Margin="0,15,0,0"/>
-        </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
