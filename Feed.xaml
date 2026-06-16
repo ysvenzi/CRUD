@@ -71,13 +71,22 @@
                                                         Height="35"
                                                         Width="100"
                                                         HorizontalAlignment="Left"
-                                                        Background="#2563EB"
-                                                        Foreground="White"
                                                         FontWeight="Bold"
                                                         BorderThickness="0"
                                                         Cursor="Hand"
                                                         Click="BtnCurtir_OnClick"
                                                         Tag="{Binding}">
+                                                    <Button.Style>
+                                                        <Style TargetType="Button">
+                                                            <Setter Property="Background" Value="Transparent"/>
+                                                            <Setter Property="Foreground" Value="CornflowerBlue"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding FoiCurtido}" Value="True">
+                                                                    <Setter Property="Foreground" Value="Brown"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Button.Style>
                                                     <Button.Resources>
                                                         <Style TargetType="Border">
                                                             <Setter Property="CornerRadius" Value="5" />
