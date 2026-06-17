@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:modelos="clr-namespace:CRUD.Modelos"
         mc:Ignorable="d"
-        Title="orkut - Feed de Notícias" Height="800" Width="650"
+        Title="orkut - Feed de Notícias" Height="800" Width="750"
         WindowStartupLocation="CenterScreen"
         Background="#F4EFEA" FontFamily="Segoe UI">
     
@@ -45,7 +45,7 @@
                     BorderThickness="1"
                     CornerRadius="8"
                     Padding="25"
-                    Height="480">
+                    Height="600">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" ShadowDepth="2" Color="#8B7355" Opacity="0.15" />
                 </Border.Effect>
@@ -61,7 +61,7 @@
                                Text="Feed Social"
                                FontSize="20"
                                FontWeight="Bold"
-                               Foreground="#4A4139"
+                               Foreground="#422405"
                                Margin="0,0,0,15"
                                HorizontalAlignment="Center" />
 
