@@ -8,36 +8,36 @@
         Title="orkut - Feed de Notícias" Height="800" Width="750"
         WindowStartupLocation="CenterScreen"
         Background="#F4EFEA" FontFamily="Segoe UI">
-    
+
     <Grid>
         <!-- Fundo em Gradiente idêntico ao padrão do seu app -->
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#F9F6F0" Offset="0.0"/>
-                <GradientStop Color="#E6DEC9" Offset="1.0"/>
+                <GradientStop Color="#F9F6F0" Offset="0.0" />
+                <GradientStop Color="#E6DEC9" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="480">
-            
+
             <!-- Cabeçalho do Orkut -->
-            <TextBlock Text="orkut!" 
-                       FontSize="42" 
-                       FontWeight="Bold" 
-                       Foreground="#7B583E" 
-                       HorizontalAlignment="Center" 
+            <TextBlock Text="orkut!"
+                       FontSize="42"
+                       FontWeight="Bold"
+                       Foreground="#7B583E"
+                       HorizontalAlignment="Center"
                        Margin="0,0,0,2">
                 <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#D2B48C" Opacity="0.5"/>
+                    <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#D2B48C" Opacity="0.5" />
                 </TextBlock.Effect>
             </TextBlock>
-            
-            <TextBlock Text="veja o que seus amigos estão compartilhando" 
-                       FontSize="13" 
-                       Foreground="#9C7A5F" 
-                       HorizontalAlignment="Center" 
-                       Margin="0,0,0,15" 
-                       FontStyle="Italic"/>
+
+            <TextBlock Text="veja o que seus amigos estão compartilhando"
+                       FontSize="13"
+                       Foreground="#9C7A5F"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,15"
+                       FontStyle="Italic" />
 
             <!-- Caixa Principal do Feed -->
             <Border Background="White"
@@ -73,7 +73,8 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type modelos:Postagem}">
                                         <!-- Post Card Divisor -->
-                                        <Border BorderBrush="#E6DEC9" BorderThickness="0,0,0,1" Margin="0,0,0,15" Padding="0,0,0,15">
+                                        <Border BorderBrush="#E6DEC9" BorderThickness="0,0,0,1" Margin="0,0,0,15"
+                                                Padding="0,0,0,15">
                                             <StackPanel>
                                                 <!-- Cabeçalho do Post: Nome, @ e Data -->
                                                 <DockPanel Margin="0,0,0,10">
@@ -82,18 +83,20 @@
                                                                    FontWeight="Bold"
                                                                    FontSize="14"
                                                                    Foreground="#7B583E" />
-                                                        <TextBlock Text="{Binding Usuario.Username, StringFormat='@{0}' }"
-                                                                   Foreground="#A89482"
-                                                                   FontSize="13"
-                                                                   Margin="6,0,0,0"
-                                                                   VerticalAlignment="Bottom"/>
+                                                        <TextBlock
+                                                            Text="{Binding Usuario.Username, StringFormat='@{0}' }"
+                                                            Foreground="#A89482"
+                                                            FontSize="13"
+                                                            Margin="6,0,0,0"
+                                                            VerticalAlignment="Bottom" />
                                                     </StackPanel>
-                                                    <TextBlock Text="{Binding Postado_em, StringFormat='dd MMM - HH:mm'}"
-                                                               Foreground="#9C7A5F"
-                                                               FontSize="11"
-                                                               FontStyle="Italic"
-                                                               HorizontalAlignment="Right"
-                                                               VerticalAlignment="Center" />
+                                                    <TextBlock
+                                                        Text="{Binding PostadoEm, StringFormat='dd MMM - HH:mm'}"
+                                                        Foreground="#9C7A5F"
+                                                        FontSize="11"
+                                                        FontStyle="Italic"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center" />
                                                 </DockPanel>
 
                                                 <!-- Conteúdo Textual do Post -->
@@ -120,14 +123,15 @@
                                                         <!-- Lógica de Triggers Visual Preservada e Adaptada -->
                                                         <Button.Style>
                                                             <Style TargetType="Button">
-                                                                <Setter Property="Background" Value="#EDF2F7"/>
-                                                                <Setter Property="Foreground" Value="#7B583E"/>
+                                                                <Setter Property="Background" Value="#EDF2F7" />
+                                                                <Setter Property="Foreground" Value="#7B583E" />
                                                                 <!-- Altera as cores quando a postagem for curtida -->
                                                                 <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding FoiCurtido}" Value="True">
-                                                                        <Setter Property="Background" Value="#FFF5F5"/>
-                                                                        <Setter Property="Foreground" Value="#C53030"/>
-                                                                        <Setter Property="BorderBrush" Value="#E53E3E"/>
+                                                                    <DataTrigger Binding="{Binding FoiCurtido}"
+                                                                            Value="True">
+                                                                        <Setter Property="Background" Value="#FFF5F5" />
+                                                                        <Setter Property="Foreground" Value="#C53030" />
+                                                                        <Setter Property="BorderBrush" Value="#E53E3E" />
                                                                     </DataTrigger>
                                                                 </Style.Triggers>
                                                             </Style>
@@ -138,7 +142,7 @@
                                                             </Style>
                                                         </Button.Resources>
                                                     </Button>
-                                                    
+
                                                     <!-- Contador de Curtidas -->
                                                     <TextBlock VerticalAlignment="Center"
                                                                FontSize="12"
@@ -157,11 +161,11 @@
             </Border>
 
             <!-- Rodapé corporativo padrão -->
-            <TextBlock Text="© 2004 - 2026 orkut paródia inc." 
-                       FontSize="11" 
-                       Foreground="#A89482" 
-                       HorizontalAlignment="Center" 
-                       Margin="0,15,0,0"/>
+            <TextBlock Text="© 2004 - 2026 orkut paródia inc."
+                       FontSize="11"
+                       Foreground="#A89482"
+                       HorizontalAlignment="Center"
+                       Margin="0,15,0,0" />
         </StackPanel>
     </Grid>
 </Window>

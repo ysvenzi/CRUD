@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="#F4EFEA" FontFamily="Segoe UI">
-    
+
     <Grid>
         <!-- Fundo em Gradiente padrão do Orkut -->
         <Grid.Background>
@@ -22,24 +22,24 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="420">
 
             <!-- Logo clássica do Orkut -->
-            <TextBlock Text="orkut!" 
-                       FontSize="42" 
-                       FontWeight="Bold" 
-                       Foreground="#7B583E" 
-                       HorizontalAlignment="Center" 
+            <TextBlock Text="orkut!"
+                       FontSize="42"
+                       FontWeight="Bold"
+                       Foreground="#7B583E"
+                       HorizontalAlignment="Center"
                        Margin="0,0,0,2">
                 <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#D2B48C" Opacity="0.5"/>
+                    <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#D2B48C" Opacity="0.5" />
                 </TextBlock.Effect>
             </TextBlock>
-            
+
             <!-- Subtítulo de Contexto -->
             <TextBlock Text="crie uma conta para começar"
                        FontSize="13"
                        Foreground="#9C7A5F"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,15"
-                       FontStyle="Italic"/>
+                       FontStyle="Italic" />
 
             <!-- Card de Formulário -->
             <Border Background="White"
@@ -81,7 +81,7 @@
                              BorderThickness="1"
                              Margin="0,0,0,15"
                              VerticalContentAlignment="Center" />
-                    
+
                     <!-- Campo: E-mail -->
                     <TextBlock Text="E-mail"
                                Foreground="#5A4535"
@@ -95,7 +95,7 @@
                              BorderThickness="1"
                              Margin="0,0,0,15"
                              VerticalContentAlignment="Center" />
-                    
+
                     <!-- Campo: Senha -->
                     <TextBlock Text="Senha"
                                Foreground="#5A4535"
