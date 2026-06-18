@@ -10,7 +10,15 @@
         Background="#F4EFEA" FontFamily="Segoe UI">
 
     <Grid>
-        <!-- Fundo em Gradiente idêntico ao padrão do seu app -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#F9F6F0" Offset="0.0" />
@@ -18,9 +26,9 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="480">
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                    VerticalAlignment="Center" HorizontalAlignment="Center" Width="480">
 
-            <!-- Cabeçalho do Orkut -->
             <TextBlock Text="orkut!"
                        FontSize="42"
                        FontWeight="Bold"
@@ -39,7 +47,6 @@
                        Margin="0,0,0,15"
                        FontStyle="Italic" />
 
-            <!-- Caixa Principal do Feed -->
             <Border Background="White"
                     BorderBrush="#D5C5B5"
                     BorderThickness="1"
@@ -56,7 +63,6 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <!-- Título interno estilizado -->
                     <TextBlock Grid.Row="0"
                                Text="Feed Social"
                                FontSize="20"
@@ -65,18 +71,14 @@
                                Margin="0,0,0,15"
                                HorizontalAlignment="Center" />
 
-                    <!-- ScrollViewer customizado para o tema -->
                     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <!-- Mantido o ItemsControl original para não quebrar o Code Behind -->
                             <ItemsControl x:Name="ItemsControlFeed">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type modelos:Postagem}">
-                                        <!-- Post Card Divisor -->
                                         <Border BorderBrush="#E6DEC9" BorderThickness="0,0,0,1" Margin="0,0,0,15"
                                                 Padding="0,0,0,15">
                                             <StackPanel>
-                                                <!-- Cabeçalho do Post: Nome, @ e Data -->
                                                 <DockPanel Margin="0,0,0,10">
                                                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
                                                         <TextBlock Text="{Binding Usuario.Nome}"
@@ -99,7 +101,6 @@
                                                         VerticalAlignment="Center" />
                                                 </DockPanel>
 
-                                                <!-- Conteúdo Textual do Post -->
                                                 <TextBlock Text="{Binding Conteudo}"
                                                            TextWrapping="Wrap"
                                                            FontSize="13"
@@ -107,7 +108,6 @@
                                                            LineHeight="18"
                                                            Margin="0,0,0,12" />
 
-                                                <!-- Área de Interações: Botão Curtir + Contador -->
                                                 <StackPanel Orientation="Horizontal">
                                                     <Button Content="❤️ Curtir"
                                                             Height="30"
@@ -120,15 +120,12 @@
                                                             Cursor="Hand"
                                                             Click="BtnCurtir_OnClick"
                                                             Tag="{Binding}">
-                                                        <!-- Lógica de Triggers Visual Preservada e Adaptada -->
                                                         <Button.Style>
                                                             <Style TargetType="Button">
                                                                 <Setter Property="Background" Value="#EDF2F7" />
                                                                 <Setter Property="Foreground" Value="#7B583E" />
-                                                                <!-- Altera as cores quando a postagem for curtida -->
                                                                 <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding FoiCurtido}"
-                                                                            Value="True">
+                                                                    <DataTrigger Binding="{Binding FoiCurtido}" Value="True">
                                                                         <Setter Property="Background" Value="#FFF5F5" />
                                                                         <Setter Property="Foreground" Value="#C53030" />
                                                                         <Setter Property="BorderBrush" Value="#E53E3E" />
@@ -143,7 +140,6 @@
                                                         </Button.Resources>
                                                     </Button>
 
-                                                    <!-- Contador de Curtidas -->
                                                     <TextBlock VerticalAlignment="Center"
                                                                FontSize="12"
                                                                Foreground="#8B7355"
@@ -160,12 +156,55 @@
                 </Grid>
             </Border>
 
-            <!-- Rodapé corporativo padrão -->
             <TextBlock Text="© 2004 - 2026 orkut paródia inc."
                        FontSize="11"
                        Foreground="#A89482"
                        HorizontalAlignment="Center"
                        Margin="0,15,0,0" />
         </StackPanel>
+
+        <Button Grid.Row="1" Grid.Column="1"
+                Click="BtnNovoPost_OnClick"
+                Width="56" 
+                Height="56" 
+                Margin="0,0,30,30" 
+                Cursor="Hand"
+                ToolTip="Adicionar nova postagem">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#7B583E" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Ellipse Fill="{TemplateBinding Background}">
+                                        <Ellipse.Effect>
+                                            <DropShadowEffect BlurRadius="8" ShadowDepth="3" Color="#422405" Opacity="0.3"/>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+                                    <TextBlock Text="+" 
+                                               FontSize="28" 
+                                               FontWeight="Light"
+                                               Foreground="{TemplateBinding Foreground}" 
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" 
+                                               Margin="0,0,0,4"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#9C7A5F" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#5C402B" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        
     </Grid>
 </Window>
