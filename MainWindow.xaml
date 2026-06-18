@@ -60,7 +60,9 @@
                              BorderBrush="#D5C5B5"
                              BorderThickness="1"
                              Margin="0,0,0,15"
-                             VerticalContentAlignment="Center" />
+                             VerticalContentAlignment="Center"
+                             
+                             />
 
                     <TextBlock Text="Senha"
                                Foreground="#5A4535"
@@ -78,6 +80,7 @@
                     <Button x:Name="BtnLogin" Click="BtnLogin_OnClick"
                             Content="Entrar"
                             Height="40"
+                            IsDefault="True"
                             Background="#7B583E"
                             Foreground="White"
                             FontWeight="Bold"

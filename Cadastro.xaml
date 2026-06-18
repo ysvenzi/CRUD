@@ -112,6 +112,7 @@
 
                     <!-- Botão Cadastrar -->
                     <Button x:Name="BtnCadastrar"
+                            IsDefault="True"
                             Content="Cadastrar"
                             Height="40"
                             Background="#7B583E"
