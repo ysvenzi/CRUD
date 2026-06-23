@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using CRUD.Modelos;
 using MySql.Data.MySqlClient;
 
@@ -19,27 +20,23 @@ public partial class MeuPerfil : Window
 
     private void BtnSalvar_OnClick(object sender, RoutedEventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(TxtNome.Text))
+        Dictionary<TextBox, string> caixasTexto = new()
         {
-            MessageBox.Show("O campo NOME não pode estar vazio.");
-            TxtNome.Focus();
-            return;
-        }
+            { TxtNome,  "Nome" },
+            { TxtEmail, "Email" },
+            {TxtUsername, "Username" }
+        };
 
-        if (string.IsNullOrWhiteSpace(TxtEmail.Text))
+        foreach (var caixinha in caixasTexto)
         {
-            MessageBox.Show("O campo EMAIL não pode estar vazio.");
-            TxtEmail.Focus();
-            return;
+            if (string.IsNullOrWhiteSpace(caixinha.Key.Text))
+            {
+                MessageBox.Show($"O campo {caixinha.Value} não pode estar vazio.");
+                caixinha.Key.Focus();
+                return;
+            }
         }
-
-        if (string.IsNullOrWhiteSpace(TxtUsername.Text))
-        {
-            MessageBox.Show("O campo USERNAME não pode estar vazio.");
-            TxtUsername.Focus();
-            return;
-        }
-
+        
         var senhaFoiAlterada = !string.IsNullOrWhiteSpace(TxtSenha.Password);
 
         _usuarioAtual.Username = TxtUsername.Text;
