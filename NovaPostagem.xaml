@@ -3,45 +3,83 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:CRUD"
         mc:Ignorable="d"
         Title="Nova Postagem"
         Height="450"
         Width="400"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner">
-    <Grid>
+        WindowStartupLocation="CenterOwner"
+        Background="#F4EFEA" FontFamily="Segoe UI">
+        
+    <Grid Name="GridPostagem">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
-        <TextBox Grid.Row="0"
-                Margin="8"
-                Padding="4"
-                FontSize="16"
-                Background="#E6DEC9">
-            <TextBox.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        
-        
-        <Button Grid.Row="1" 
+
+        <Grid Grid.Row="0" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Row="0"
+                     Padding="8"
+                     FontSize="16"
+                     MaxLength="140"
+                     MaxLines="6"
+                     TextWrapping="Wrap"
+                     Background="#E6DEC9"
+                     Foreground="#5A4535"
+                     BorderBrush="#D5C5B5"
+                     BorderThickness="1"
+                     x:Name="TbConteudo"
+                     TextChanged="TbConteudo_OnTextChanged">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5" />
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <Label Grid.Row="1"
+                   Content="0/140"
+                   HorizontalAlignment="Right"
+                   FontSize="12"
+                   FontWeight="SemiBold"
+                   Foreground="#9C7A5F"
+                   Margin="0,4,0,0"
+                   x:Name="lblCaracteresMax" />
+        </Grid>
+
+        <Button Grid.Row="1"
                 Background="#7B583E"
                 Foreground="White"
                 Content="Postar"
                 FontSize="20"
                 FontWeight="Bold"
                 Margin="8"
-                Padding="8">
+                Padding="8"
+                Cursor="Hand"
+                Click="BtnPostar_OnClick">
             <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#5C402D" />
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
             </Button.Resources>
-        </Button>    
+        </Button>
     </Grid>
 </Window>

@@ -61,14 +61,17 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            Console.WriteLine(exception);
+            MessageBox.Show($"Erro: {exception.Message}", "Erro!");
+        }
+        finally
+        {
+            conexao.Close();
         }
     }
 
     private void BtnCadastro_OnClick(object sender, RoutedEventArgs e)
     {
-        var janelaCadastro = new Cadastro();
-        janelaCadastro.Show();
-        Close(); 
+        new Cadastro().Show();
+        Close();
     }
 }

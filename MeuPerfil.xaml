@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
-        Title="orkut - Meu Perfil" Height="800" Width="750"
+        Title="orkut - Meu Perfil" Height="780" Width="750"
         WindowStartupLocation="CenterScreen"
         Background="#F4EFEA" FontFamily="Segoe UI">
 
@@ -41,7 +41,6 @@
                     BorderThickness="1"
                     CornerRadius="8"
                     Padding="30">
-
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" ShadowDepth="2" Color="#8B7355" Opacity="0.15" />
                 </Border.Effect>
@@ -132,8 +131,7 @@
                                     <Setter.Value>
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}" CornerRadius="4">
-                                                <ContentPresenter HorizontalAlignment="Center"
-                                                                  VerticalAlignment="Center" />
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>

@@ -25,7 +25,7 @@ public partial class Cadastro : Window
 
         using var conexao = new MySqlConnection(App.StringConexao);
         const string query =
-            "INSERT INTO usuarios(nome, username, email, senha) VALUES(@nome, @username, @email, @senha); SELECT LAST_INSERT_ID();";
+            "INSERT INTO usuarios(nome, username, email, senha) VALUES(@nome, @username, @email, @senha); SELECT LAST_INSERT_ID()";
 
         using var comando = new MySqlCommand(query, conexao);
         comando.Parameters.AddWithValue("@nome", TxtNome.Text);
@@ -37,7 +37,7 @@ public partial class Cadastro : Window
         {
             conexao.Open();
             var idGerado = comando.ExecuteScalar();
-            if (idGerado is null) throw new Exception("Cadastro não realizado!");
+            if (idGerado is null) throw new Exception("Cadastro não foi realizado");
             new Feed(new Usuario
             {
                 Nome = TxtNome.Text,
@@ -55,7 +55,11 @@ public partial class Cadastro : Window
                 return;
             }
 
-            Console.WriteLine(exception);
+            MessageBox.Show(exception.Message);
+        }
+        finally
+        {
+            conexao.Close();
         }
     }
 }

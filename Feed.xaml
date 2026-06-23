@@ -5,20 +5,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:modelos="clr-namespace:CRUD.Modelos"
         mc:Ignorable="d"
-        Title="orkut - Feed de Notícias" Height="800" Width="750"
+        Title="orkut - Feed de Notícias" Height="680" Width="800"
         WindowStartupLocation="CenterScreen"
         Background="#F4EFEA" FontFamily="Segoe UI">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#F9F6F0" Offset="0.0" />
@@ -26,9 +17,8 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
-                    VerticalAlignment="Center" HorizontalAlignment="Center" Width="480">
-
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="440">
+            
             <TextBlock Text="orkut!"
                        FontSize="42"
                        FontWeight="Bold"
@@ -52,7 +42,8 @@
                     BorderThickness="1"
                     CornerRadius="8"
                     Padding="25"
-                    Height="600">
+                    Width="420"
+                    Height="480">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" ShadowDepth="2" Color="#8B7355" Opacity="0.15" />
                 </Border.Effect>
@@ -76,8 +67,7 @@
                             <ItemsControl x:Name="ItemsControlFeed">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type modelos:Postagem}">
-                                        <Border BorderBrush="#E6DEC9" BorderThickness="0,0,0,1" Margin="0,0,0,15"
-                                                Padding="0,0,0,15">
+                                        <Border BorderBrush="#E6DEC9" BorderThickness="0,0,0,1" Margin="0,0,0,15" Padding="0,0,0,15">
                                             <StackPanel>
                                                 <DockPanel Margin="0,0,0,10">
                                                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
@@ -85,20 +75,18 @@
                                                                    FontWeight="Bold"
                                                                    FontSize="14"
                                                                    Foreground="#7B583E" />
-                                                        <TextBlock
-                                                            Text="{Binding Usuario.Username, StringFormat='@{0}' }"
-                                                            Foreground="#A89482"
-                                                            FontSize="13"
-                                                            Margin="6,0,0,0"
-                                                            VerticalAlignment="Bottom" />
+                                                        <TextBlock Text="{Binding Usuario.Username, StringFormat='@{0}' }"
+                                                                   Foreground="#A89482"
+                                                                   FontSize="13"
+                                                                   Margin="6,0,0,0"
+                                                                   VerticalAlignment="Bottom" />
                                                     </StackPanel>
-                                                    <TextBlock
-                                                        Text="{Binding PostadoEm, StringFormat='dd MMM - HH:mm'}"
-                                                        Foreground="#9C7A5F"
-                                                        FontSize="11"
-                                                        FontStyle="Italic"
-                                                        HorizontalAlignment="Right"
-                                                        VerticalAlignment="Center" />
+                                                    <TextBlock Text="{Binding PostadoEm, StringFormat='dd MMM - HH:mm'}"
+                                                               Foreground="#9C7A5F"
+                                                               FontSize="11"
+                                                               FontStyle="Italic"
+                                                               HorizontalAlignment="Right"
+                                                               VerticalAlignment="Center" />
                                                 </DockPanel>
 
                                                 <TextBlock Text="{Binding Conteudo}"
@@ -163,48 +151,53 @@
                        Margin="0,15,0,0" />
         </StackPanel>
 
-        <Button Grid.Row="1" Grid.Column="1"
-                Click="BtnNovoPost_OnClick"
-                Width="56" 
-                Height="56" 
-                Margin="0,0,30,30" 
-                Cursor="Hand"
-                ToolTip="Adicionar nova postagem">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="#7B583E" />
-                    <Setter Property="Foreground" Value="White" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Grid>
-                                    <Ellipse Fill="{TemplateBinding Background}">
-                                        <Ellipse.Effect>
-                                            <DropShadowEffect BlurRadius="8" ShadowDepth="3" Color="#422405" Opacity="0.3"/>
-                                        </Ellipse.Effect>
-                                    </Ellipse>
-                                    <TextBlock Text="+" 
-                                               FontSize="28" 
-                                               FontWeight="Light"
-                                               Foreground="{TemplateBinding Foreground}" 
-                                               HorizontalAlignment="Center" 
-                                               VerticalAlignment="Center" 
-                                               Margin="0,0,0,4"/>
-                                </Grid>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#9C7A5F" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="#5C402B" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
+        <Grid.Resources>
+            <Style x:Key="BotaoFlutuanteMarrom" TargetType="Button">
+                <Setter Property="Background" Value="#7B583E" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse Fill="{TemplateBinding Background}">
+                                    <Ellipse.Effect>
+                                        <DropShadowEffect BlurRadius="8" ShadowDepth="3" Color="#422405" Opacity="0.3"/>
+                                    </Ellipse.Effect>
+                                </Ellipse>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,4"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#9C7A5F" />
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="#5C402B" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+
+        <Button Style="{StaticResource BotaoFlutuanteMarrom}"
+                Width="56" Height="56"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="0,0,30,100"
+                Click="BtnPerfil_OnClick"
+                ToolTip="Ir para o Perfil">
+            <TextBlock Text="👤" FontSize="20" FontWeight="Normal" Foreground="White" />
         </Button>
-        
+
+        <Button Style="{StaticResource BotaoFlutuanteMarrom}"
+                Width="56" Height="56"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="0,0,30,30"
+                Click="BtnNovoPost_OnClick"
+                ToolTip="Adicionar nova postagem">
+            <TextBlock Text="+" FontSize="28" FontWeight="Light" Foreground="White" />
+        </Button>
+
     </Grid>
 </Window>
