@@ -17,9 +17,9 @@ public partial class Cadastro : Window
     {
         Dictionary<TextBox, string> caixasTexto = new()
         {
-            {TxtNome, "Nome"},
-            {TxtEmail, "Email"},
-            {TxtUsername, "Username"}
+            { TxtNome, "Nome" },
+            { TxtEmail, "Email" },
+            { TxtUsername, "Username" }
         };
 
         foreach (var caixinha in caixasTexto)
@@ -31,7 +31,7 @@ public partial class Cadastro : Window
                 return;
             }
         }
-        
+
         if (string.IsNullOrWhiteSpace(TxtSenha.Password))
         {
             MessageBox.Show("O campo Senha é obrigatório.", "Erro!");

@@ -22,9 +22,9 @@ public partial class MeuPerfil : Window
     {
         Dictionary<TextBox, string> caixasTexto = new()
         {
-            { TxtNome,  "Nome" },
+            { TxtNome, "Nome" },
             { TxtEmail, "Email" },
-            {TxtUsername, "Username" }
+            { TxtUsername, "Username" }
         };
 
         foreach (var caixinha in caixasTexto)
@@ -36,7 +36,7 @@ public partial class MeuPerfil : Window
                 return;
             }
         }
-        
+
         var senhaFoiAlterada = !string.IsNullOrWhiteSpace(TxtSenha.Password);
 
         _usuarioAtual.Username = TxtUsername.Text;
