@@ -61,6 +61,8 @@
                 Margin="8"
                 Padding="8"
                 Cursor="Hand"
+                IsDefault="True"
+                ToolTip="Clique para postar"
                 Click="BtnPostar_OnClick">
             <Button.Resources>
                 <Style TargetType="Button">
