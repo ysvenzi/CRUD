@@ -6,6 +6,7 @@
         xmlns:modelos="clr-namespace:CRUD.Modelos"
         xmlns:utils="clr-namespace:CRUD.Utils"
         mc:Ignorable="d"
+        Icon="Resources/icon.png"
         Title="orkut - Feed de Notícias" Height="900" Width="700"
         WindowStartupLocation="CenterScreen"
         Background="#F4EFEA" FontFamily="Segoe UI">
