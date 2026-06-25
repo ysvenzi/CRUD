@@ -125,7 +125,7 @@ public partial class Feed : Window
 
     private void BtnNovoPost_OnClick(object sender, RoutedEventArgs e)
     {
-        new NovaPostagem(_usuario).ShowDialog();
+        new JanelaPostagem(_usuario).ShowDialog();
         CarregarPosts_QuandoIniciar();
     }
 
@@ -137,15 +137,15 @@ public partial class Feed : Window
 
     private void BtnApagarPostagem_OnClick(object sender, RoutedEventArgs e)
     {
-        var resultadoConfirmacao = MessageBox.Show("Tem certeza que deseja apagar a postagem?", 
-            "Confirmar Exclusão",  
+        var resultadoConfirmacao = MessageBox.Show("Tem certeza que deseja apagar a postagem?",
+            "Confirmar Exclusão",
             MessageBoxButton.YesNo);
-        
+
         if (resultadoConfirmacao == MessageBoxResult.No) return;
 
         var botao = (Button)sender;
         var postagemId = (int)botao.Tag;
-        
+
         using var conexao = new MySqlConnection(App.StringConexao);
         const string query = "DELETE FROM postagens WHERE id = @postagem_id";
         using var comando = new MySqlCommand(query, conexao);
@@ -171,6 +171,9 @@ public partial class Feed : Window
 
     private void BtnEditarPostagem_OnClick(object sender, RoutedEventArgs e)
     {
-        
+        var botao = (Button)sender;
+        var postagem = (Postagem)botao.Tag;
+
+        new JanelaPostagem(_usuario, postagem).ShowDialog();
     }
 }
